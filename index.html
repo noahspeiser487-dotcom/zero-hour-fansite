@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C&C Generals: Zero Hour — Fan Site</title>
+  <meta name="description" content="Fan-Site zu Command & Conquer Generals Zero Hour mit interaktiven Features." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <header class="hero">
+    <div class="overlay"></div>
+    <nav>
+      <h1>ZERO HOUR</h1>
+      <button id="themeBtn">⚡</button>
+    </nav>
+    <div class="hero-content">
+      <p class="kicker">Command & Conquer Generals</p>
+      <h2>Fan Site, die durch die Decke geht 🚀</h2>
+      <p>Factions, Units, Build Orders, Easter Eggs und pure Nostalgie.</p>
+      <a href="#features" class="cta">Enter Battlefield</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="features" class="panel">
+      <h3>Interaktive Features</h3>
+      <div class="grid">
+        <article>
+          <h4>Faction Picker</h4>
+          <select id="faction">
+            <option>USA</option>
+            <option>China</option>
+            <option>GLA</option>
+          </select>
+          <p id="factionText"></p>
+        </article>
+
+        <article>
+          <h4>Unit Browser</h4>
+          <input id="unitSearch" placeholder="Unit suchen… (z.B. Aurora)" />
+          <ul id="unitList"></ul>
+        </article>
+
+        <article>
+          <h4>Build-Order Planer</h4>
+          <input id="buildInput" placeholder="Schritt hinzufügen" />
+          <button id="addBuild">Add</button>
+          <ol id="buildList"></ol>
+          <button id="clearBuild" class="ghost">Reset</button>
+        </article>
+
+        <article>
+          <h4>Random Commander Quote</h4>
+          <p id="quote"></p>
+          <button id="newQuote">Neue Quote</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel timeline">
+      <h3>Why Zero Hour still slaps</h3>
+      <div class="line">
+        <div><strong>2003:</strong> Release + Legendenstatus</div>
+        <div><strong>Heute:</strong> Modding, LANs, Turniere</div>
+        <div><strong>Immer:</strong> "Can I have some shoes?"</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fan project by Noah & Crabby 🦀 · Not affiliated with EA.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
