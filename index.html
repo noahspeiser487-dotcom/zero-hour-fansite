@@ -2,76 +2,40 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zero Hour Hub — Guides, Build Orders, Counter Tool</title>
-  <meta name="description" content="Praktische Zero Hour Website mit echten Guides, Build-Orders, Counter-Tool und Trainingsfeatures." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zero Hour Mega Guide Hub</title>
+  <meta name="description" content="Voller Guide-Hub zu C&C Generals Zero Hour im FMHY-inspirierten Directory-Style." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>ZERO HOUR HUB</h1>
-    <p>Kein Blabla. Nur Guides, Tools und Wins.</p>
+  <header class="topbar">
+    <div>
+      <h1>Zero Hour Guide Hub</h1>
+      <p>FMHY-inspirierter Full-Guide: Fraktionen, Generäle, Build Orders, Matchups, Meta.</p>
+    </div>
+    <input id="search" placeholder="Suche: z.B. Toxin, Overlord, BO, Matchup..." />
   </header>
 
-  <main>
-    <section class="card">
-      <h2>1) Build-Order Guides</h2>
-      <div class="row">
-        <select id="factionFilter">
-          <option value="all">Alle Factions</option>
-          <option>USA</option><option>China</option><option>GLA</option>
-        </select>
-        <select id="mapFilter">
-          <option value="all">Alle Maps</option>
-          <option>Tournament Desert</option>
-          <option>Fallen Empire</option>
-          <option>Defcon 6</option>
-        </select>
-      </div>
-      <div id="guideList" class="grid"></div>
-    </section>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
 
-    <section class="card">
-      <h2>2) Counter Tool (Was kontert was?)</h2>
-      <div class="row">
-        <input id="unitInput" placeholder="Unit eingeben, z.B. Overlord" />
-        <button id="counterBtn">Counter finden</button>
-      </div>
-      <div id="counterOut" class="out"></div>
-    </section>
+    <main id="content">
+      <section id="start" class="card">
+        <h2>Willkommen</h2>
+        <p>Das ist ein <strong>voller Zero-Hour Guide</strong> mit Fokus auf praktischen Nutzen: konkrete Build Orders, Counter-Listen, Matchup-Pläne und Trainingsziele.</p>
+        <ul>
+          <li>Nutze links die Navigation.</li>
+          <li>Mit der Suche oben filterst du Inhalte live.</li>
+          <li>Jede Section ist auf Match-Wins ausgelegt, nicht nur Lore.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
 
-    <section class="card">
-      <h2>3) Matchup Mini-Guide</h2>
-      <div class="row">
-        <select id="m1"><option>USA</option><option>China</option><option>GLA</option></select>
-        <span>vs</span>
-        <select id="m2"><option>USA</option><option>China</option><option>GLA</option></select>
-        <button id="matchBtn">Plan anzeigen</button>
-      </div>
-      <div id="matchOut" class="out"></div>
-    </section>
+  <footer>
+    Fan project by Noah & Crabby 🦀 · Not affiliated with EA.
+  </footer>
 
-    <section class="card">
-      <h2>4) Hotkey Training</h2>
-      <p>Klick Start, drück den richtigen Key.</p>
-      <div class="row">
-        <button id="hotkeyStart">Start</button>
-        <strong id="hotkeyTask">-</strong>
-        <span id="hotkeyScore">Score: 0</span>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>5) Useful Links</h2>
-      <ul>
-        <li><a href="https://www.gentool.net/" target="_blank">GenTool</a></li>
-        <li><a href="https://cnc-online.net/en/" target="_blank">C&C Online</a></li>
-        <li><a href="https://www.gamereplays.org/cnczerohour/" target="_blank">GameReplays Zero Hour</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>Fan project · by Noah & Crabby 🦀</footer>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,11 +1,16 @@
-# Zero Hour Hub (Functional)
+# Zero Hour Mega Guide Hub
 
-Diese Version ist als **praktische Utility-Seite** gebaut:
+FMHY-inspirierter Directory-Style Guide mit viel Inhalt.
 
-- Build-Order Guides mit Faction/Map-Filter
-- Counter Tool (Unit -> Counter)
-- Matchup Mini-Guide
-- Hotkey Training Mini-Game
-- Nützliche Links (GenTool, C&C Online, GameReplays)
+## Enthält
+- Core Fundamentals
+- Guides zu USA / China / GLA
+- Generäle-Sektionen (alle Subfactions)
+- Build-Order Library
+- Matchup-Pläne
+- Counter Cheat Sheet
+- Replay Review Framework
+- Tools & Community Links
+- Live-Suche über alle Inhalte
 
-Live über GitHub Pages.
+Live auf GitHub Pages.
