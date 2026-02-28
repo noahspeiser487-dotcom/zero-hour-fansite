@@ -2,77 +2,76 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C&C Generals: Zero Hour — Fan Site</title>
-  <meta name="description" content="Fan-Site zu Command & Conquer Generals Zero Hour mit interaktiven Features." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zero Hour Hub — Guides, Build Orders, Counter Tool</title>
+  <meta name="description" content="Praktische Zero Hour Website mit echten Guides, Build-Orders, Counter-Tool und Trainingsfeatures." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <header class="hero">
-    <div class="overlay"></div>
-    <nav>
-      <h1>ZERO HOUR</h1>
-      <button id="themeBtn">⚡</button>
-    </nav>
-    <div class="hero-content">
-      <p class="kicker">Command & Conquer Generals</p>
-      <h2>Fan Site, die durch die Decke geht 🚀</h2>
-      <p>Factions, Units, Build Orders, Easter Eggs und pure Nostalgie.</p>
-      <a href="#features" class="cta">Enter Battlefield</a>
-    </div>
+  <header>
+    <h1>ZERO HOUR HUB</h1>
+    <p>Kein Blabla. Nur Guides, Tools und Wins.</p>
   </header>
 
   <main>
-    <section id="features" class="panel">
-      <h3>Interaktive Features</h3>
-      <div class="grid">
-        <article>
-          <h4>Faction Picker</h4>
-          <select id="faction">
-            <option>USA</option>
-            <option>China</option>
-            <option>GLA</option>
-          </select>
-          <p id="factionText"></p>
-        </article>
+    <section class="card">
+      <h2>1) Build-Order Guides</h2>
+      <div class="row">
+        <select id="factionFilter">
+          <option value="all">Alle Factions</option>
+          <option>USA</option><option>China</option><option>GLA</option>
+        </select>
+        <select id="mapFilter">
+          <option value="all">Alle Maps</option>
+          <option>Tournament Desert</option>
+          <option>Fallen Empire</option>
+          <option>Defcon 6</option>
+        </select>
+      </div>
+      <div id="guideList" class="grid"></div>
+    </section>
 
-        <article>
-          <h4>Unit Browser</h4>
-          <input id="unitSearch" placeholder="Unit suchen… (z.B. Aurora)" />
-          <ul id="unitList"></ul>
-        </article>
+    <section class="card">
+      <h2>2) Counter Tool (Was kontert was?)</h2>
+      <div class="row">
+        <input id="unitInput" placeholder="Unit eingeben, z.B. Overlord" />
+        <button id="counterBtn">Counter finden</button>
+      </div>
+      <div id="counterOut" class="out"></div>
+    </section>
 
-        <article>
-          <h4>Build-Order Planer</h4>
-          <input id="buildInput" placeholder="Schritt hinzufügen" />
-          <button id="addBuild">Add</button>
-          <ol id="buildList"></ol>
-          <button id="clearBuild" class="ghost">Reset</button>
-        </article>
+    <section class="card">
+      <h2>3) Matchup Mini-Guide</h2>
+      <div class="row">
+        <select id="m1"><option>USA</option><option>China</option><option>GLA</option></select>
+        <span>vs</span>
+        <select id="m2"><option>USA</option><option>China</option><option>GLA</option></select>
+        <button id="matchBtn">Plan anzeigen</button>
+      </div>
+      <div id="matchOut" class="out"></div>
+    </section>
 
-        <article>
-          <h4>Random Commander Quote</h4>
-          <p id="quote"></p>
-          <button id="newQuote">Neue Quote</button>
-        </article>
+    <section class="card">
+      <h2>4) Hotkey Training</h2>
+      <p>Klick Start, drück den richtigen Key.</p>
+      <div class="row">
+        <button id="hotkeyStart">Start</button>
+        <strong id="hotkeyTask">-</strong>
+        <span id="hotkeyScore">Score: 0</span>
       </div>
     </section>
 
-    <section class="panel timeline">
-      <h3>Why Zero Hour still slaps</h3>
-      <div class="line">
-        <div><strong>2003:</strong> Release + Legendenstatus</div>
-        <div><strong>Heute:</strong> Modding, LANs, Turniere</div>
-        <div><strong>Immer:</strong> "Can I have some shoes?"</div>
-      </div>
+    <section class="card">
+      <h2>5) Useful Links</h2>
+      <ul>
+        <li><a href="https://www.gentool.net/" target="_blank">GenTool</a></li>
+        <li><a href="https://cnc-online.net/en/" target="_blank">C&C Online</a></li>
+        <li><a href="https://www.gamereplays.org/cnczerohour/" target="_blank">GameReplays Zero Hour</a></li>
+      </ul>
     </section>
   </main>
 
-  <footer>
-    <p>Fan project by Noah & Crabby 🦀 · Not affiliated with EA.</p>
-  </footer>
-
+  <footer>Fan project · by Noah & Crabby 🦀</footer>
   <script src="script.js"></script>
 </body>
 </html>

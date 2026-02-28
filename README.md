@@ -1,13 +1,11 @@
-# Zero Hour Fan Site
+# Zero Hour Hub (Functional)
 
-Interaktive Fan-Site zu **Command & Conquer Generals: Zero Hour**.
+Diese Version ist als **praktische Utility-Seite** gebaut:
 
-## Features
-- Faction Picker
-- Unit Browser (Suche)
-- Build-Order Planer (localStorage)
-- Random Commander Quotes
-- Animated Background + Easter Egg
+- Build-Order Guides mit Faction/Map-Filter
+- Counter Tool (Unit -> Counter)
+- Matchup Mini-Guide
+- Hotkey Training Mini-Game
+- Nützliche Links (GenTool, C&C Online, GameReplays)
 
-## Live
-Wird über GitHub Pages veröffentlicht.
+Live über GitHub Pages.

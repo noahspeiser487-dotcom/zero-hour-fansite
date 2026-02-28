@@ -1,62 +1,65 @@
-const factionText = {
-  USA: "High-Tech Power: Drohnen, Präzision, Air Superiority.",
-  China: "Brutale Masse: Nukes, Overlords, Flammenwerfer-Chaos.",
-  GLA: "Hit & Run: Tunnels, Ambushes, toxische Tricks."
+const guides=[
+{f:'USA',map:'Tournament Desert',name:'Safe Dual Supply + Fast Vees',steps:['Dozer1: Power','Dozer2: Supply','Barracks + 2x Supply Center','War Factory','3 Humvees + MD load','Pressure Mitte']},
+{f:'USA',map:'Fallen Empire',name:'Airfield Timing Push',steps:['Power','Dual Supply','Airfield','2 King Raptors','Deny Oils','Transition War Factory']},
+{f:'China',map:'Tournament Desert',name:'Standard Nuke Pressure',steps:['Power','Dual Supply','War Factory','2 Battlemaster + 1 Gatt','Propaganda Center timing','Overlord transition']},
+{f:'China',map:'Defcon 6',name:'Eco into Tech Spam',steps:['Dual Supply greed','War Factory','Tank Hunter bunker mid','Fast ECM support','Map control links/rechts']},
+{f:'GLA',map:'Tournament Desert',name:'Tunnel Aggro + Tech RPG',steps:['Supply + Barracks','Arms Dealer','Forward Tunnel','Tech RPG harass','Spam Quads + Scorps']},
+{f:'GLA',map:'Fallen Empire',name:'Oil Control GLA',steps:['Fast Workers zu Oils','Tunnel Network sichern','Capture Upgrade','Defensive Quads','Counterpush midgame']}];
+
+const counters={
+"overlord":"Counter: Aurora / Nuke Cannon / Jarmen Kell + Rocket Support",
+"humvee":"Counter: Gattling + ECM / Quads + Technical surround",
+"quad cannon":"Counter: MD-Humvee kite / Dragon Tank flame wall",
+"battle bus":"Counter: EMP Patriot + focus fire / Migs splash",
+"comanche":"Counter: Gattling Tank / Quad Cannon mass",
+"scud launcher":"Counter: Aurora strike / Sneak tech flank"
 };
-const units = [
-  "Aurora Bomber", "Comanche", "Tomahawk", "Paladin", "Overlord", "Gattling Tank",
-  "Nuke Cannon", "ECM Tank", "Scorpion Tank", "Quad Cannon", "Battle Bus", "Jarmen Kell"
-];
-const quotes = [
-  "Can I have some shoes?", "AK-47s for everyone!", "China will grow larger.",
-  "Our base is under attack!", "Unit lost.", "Need a point-man?"
-];
 
-const factionSel = document.getElementById('faction');
-const factionOut = document.getElementById('factionText');
-const list = document.getElementById('unitList');
-const search = document.getElementById('unitSearch');
-const quote = document.getElementById('quote');
+const matchup={
+"USA-GLA":"Early: deny tunnels. Mid: Vee control + scan. Late: avoid overextending into ambush.",
+"USA-China":"Early: survive push. Mid: kite with Vees. Late: split army vs Nuke splash.",
+"China-GLA":"Early: deny workers. Mid: Gatt+BM timing. Late: ECM + Overlord, watch Jarmen.",
+"GLA-USA":"Early: tunnel spread. Mid: tech harassment. Late: map control + cash bounties.",
+"GLA-China":"Early: worker map control. Mid: quad/scorp mix. Late: bus + sneak attacks.",
+"China-USA":"Early: force fights. Mid: deny oils. Late: ECM wall + artillery pressure."
+};
 
-function renderUnits(filter=''){
-  list.innerHTML='';
-  units.filter(u=>u.toLowerCase().includes(filter.toLowerCase())).forEach(u=>{
-    const li=document.createElement('li'); li.textContent=u; list.appendChild(li);
+function renderGuides(){
+  const f=document.getElementById('factionFilter').value;
+  const m=document.getElementById('mapFilter').value;
+  const box=document.getElementById('guideList'); box.innerHTML='';
+  guides.filter(g=>(f==='all'||g.f===f)&&(m==='all'||g.map===m)).forEach(g=>{
+    const d=document.createElement('div'); d.className='guide';
+    d.innerHTML=`<h3>${g.name}</h3><small>${g.f} · ${g.map}</small><ol>${g.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+    box.appendChild(d);
   });
+  if(!box.innerHTML) box.innerHTML='<div class="guide">Keine Guides für diesen Filter.</div>';
 }
-function newQuote(){ quote.textContent = quotes[Math.floor(Math.random()*quotes.length)]; }
 
-factionSel.onchange=()=> factionOut.textContent = factionText[factionSel.value];
-search.oninput=()=> renderUnits(search.value);
-document.getElementById('newQuote').onclick=newQuote;
+document.getElementById('factionFilter').onchange=renderGuides;
+document.getElementById('mapFilter').onchange=renderGuides;
 
-const buildInput=document.getElementById('buildInput');
-const addBuild=document.getElementById('addBuild');
-const buildList=document.getElementById('buildList');
-const clearBuild=document.getElementById('clearBuild');
-let build = JSON.parse(localStorage.getItem('zh_build') || '[]');
-function renderBuild(){
-  buildList.innerHTML='';
-  build.forEach((s,i)=>{const li=document.createElement('li');li.textContent=`${i+1}. ${s}`;buildList.appendChild(li)});
-  localStorage.setItem('zh_build', JSON.stringify(build));
-}
-addBuild.onclick=()=>{ if(buildInput.value.trim()){ build.push(buildInput.value.trim()); buildInput.value=''; renderBuild(); }};
-clearBuild.onclick=()=>{ build=[]; renderBuild(); };
+document.getElementById('counterBtn').onclick=()=>{
+  const q=document.getElementById('unitInput').value.trim().toLowerCase();
+  document.getElementById('counterOut').textContent = counters[q] || 'Kein Eintrag. Versuch z.B. Overlord, Humvee, Battle Bus.';
+};
 
-// Theme toggle
-const themeBtn=document.getElementById('themeBtn');
-themeBtn.onclick=()=>document.body.classList.toggle('light');
+document.getElementById('matchBtn').onclick=()=>{
+  const a=document.getElementById('m1').value,b=document.getElementById('m2').value;
+  const key=`${a}-${b}`;
+  document.getElementById('matchOut').textContent = matchup[key] || 'Mirror-Match: Makro + saubere Micro entscheiden.';
+};
 
-// Background stars
-const c=document.getElementById('bg'),ctx=c.getContext('2d');
-let w,h,stars;
-function resize(){w=c.width=innerWidth;h=c.height=innerHeight;stars=Array.from({length:120},()=>({x:Math.random()*w,y:Math.random()*h,s:Math.random()*2+0.2}));}
-function draw(){ctx.clearRect(0,0,w,h);ctx.fillStyle='white';stars.forEach(st=>{ctx.globalAlpha=.2+st.s/3;ctx.fillRect(st.x,st.y,st.s,st.s);st.y+=st.s*.25;if(st.y>h)st.y=0;});requestAnimationFrame(draw)}
-addEventListener('resize',resize);resize();draw();
+const tasks=[['Dozer stoppen','S'],['Unit gruppieren','Ctrl+1'],['Attack Move','A'],['Stop','S'],['Waypoint setzen','Shift']];
+let active=null,score=0;
+document.getElementById('hotkeyStart').onclick=()=>{
+  active=tasks[Math.floor(Math.random()*tasks.length)];
+  document.getElementById('hotkeyTask').textContent=`Aufgabe: ${active[0]} → ${active[1]}`;
+};
+addEventListener('keydown',e=>{
+  if(!active) return;
+  const pressed=(e.ctrlKey?'Ctrl+':'') + (e.key.length===1?e.key.toUpperCase():e.key);
+  if(pressed===active[1]){score++;document.getElementById('hotkeyScore').textContent=`Score: ${score}`;active=null;document.getElementById('hotkeyTask').textContent='Treffer ✅ Neues Starten';}
+});
 
-// Easter egg: type "nuke"
-let keyBuf='';
-addEventListener('keydown',e=>{ keyBuf=(keyBuf+e.key.toLowerCase()).slice(-4); if(keyBuf==='nuke'){ document.body.style.filter='hue-rotate(120deg)'; setTimeout(()=>document.body.style.filter='',1200);} });
-
-factionOut.textContent=factionText[factionSel.value];
-renderUnits(); newQuote(); renderBuild();
+renderGuides();
